@@ -1,18 +1,13 @@
-local ascii_art = [[
-by malachi nakubeiei
- _   _                                                     _   _            _     
-( ) ( )                                 / \_/ \           ( ) ( )          ( )    
-| |/ / _ __   _ _ _ _   _ __   _ _   _  |     |  _     _  | |/ / _ __   _  | |_   
-|   ( (  __)/ _  )  _ \(  __)/ _  )/ _ \| (_) |/ _ \ / _ \|   ( (  __)/ _ \|  _ \ 
-| |\ \| |  ( (_| | (_) ) |  ( (_| | (_) ) | | | (_) ) (_) ) |\ \| |  ( (_) ) |_) )
-(_) (_)_)   \__ _)  __/(_)   \__ _)\___/(_) (_)\___/ \___/(_) (_)_)   \___/(_ __/ 
-                 | |                                                              
-                 (_)                                                              
-                                                      
-]]
+--[[
 
--- แสดงข้อความในคอนโซล
-print(ascii_art)
+Rayfield Interface Suite
+by Sirius
+
+shlex | Designing + Programming
+iRay  | Programming
+Max   | Programming
+
+]]
 
 
 
@@ -418,12 +413,14 @@ local RunService = game:GetService("RunService")
 local Players = game:GetService("Players")
 local CoreGui = game:GetService("CoreGui")
 
+-- Environment Check
 local useStudio
 
 if RunService:IsStudio() then
 	useStudio = true
 end
 
+-- Interface Management
 
 local Rayfield = useStudio and script.Parent:FindFirstChild('Rayfield') or game:GetObjects("rbxassetid://10804731440")[1]
 local buildAttempts = 0
@@ -492,6 +489,7 @@ if UserInputService.TouchEnabled then
 end
 
 
+-- Object Variables
 
 local Main = Rayfield.Main
 local MPrompt = Rayfield:FindFirstChild('Prompt')
@@ -512,6 +510,7 @@ LoadingFrame.Version.Text = Release
 
 local Icons = useStudio and require(script.Parent.icons) or loadstring(game:HttpGet('https://raw.githubusercontent.com/SiriusSoftwareLtd/Rayfield/refs/heads/main/icons.lua'))()
 
+-- Variables
 
 local CFileName = nil
 local CEnabled = false
@@ -684,7 +683,8 @@ end
 local function LoadConfiguration(Configuration)
 	local Data = HttpService:JSONDecode(Configuration)
 	local changed
-	
+
+	-- Iterate through current UI elements' flags
 	for FlagName, Flag in pairs(RayfieldLibrary.Flags) do
 		local FlagValue = Data[FlagName]
 
@@ -927,9 +927,9 @@ local function Hide(notify: boolean?)
 	Debounce = true
 	if notify then
 		if useMobilePrompt then 
-			RayfieldLibrary:Notify({Title = "Interface Hidden", Content = "กดตัว 'Show Rayfield' เพื่อเปิด ui อีกรอบนะ <3..", Duration = 7, Image = 4400697855})
+			RayfieldLibrary:Notify({Title = "Interface Hidden", Content = "The interface has been hidden, you can unhide the interface by tapping 'Show Rayfield'.", Duration = 7, Image = 4400697855})
 		else
-			RayfieldLibrary:Notify({Title = "Interface Hidden", Content = "กดตัว K เพื่อเปิด ui อีกรอบนะ <3.", Duration = 7, Image = 4400697855})
+			RayfieldLibrary:Notify({Title = "Interface Hidden", Content = "The interface has been hidden, you can unhide the interface by tapping K.", Duration = 7, Image = 4400697855})
 		end
 	end
 
@@ -3416,45 +3416,46 @@ if useStudio then
 	})
 
 
-	Window.ModifyTheme({
-		TextColor = Color3.fromRGB(50, 55, 60),
-		Background = Color3.fromRGB(240, 245, 250),
-		Topbar = Color3.fromRGB(215, 225, 235),
-		Shadow = Color3.fromRGB(200, 210, 220),
+	--Window.ModifyTheme({
+	--	TextColor = Color3.fromRGB(50, 55, 60),
+	--	Background = Color3.fromRGB(240, 245, 250),
+	--	Topbar = Color3.fromRGB(215, 225, 235),
+	--	Shadow = Color3.fromRGB(200, 210, 220),
 
-		NotificationBackground = Color3.fromRGB(210, 220, 230),
-		NotificationActionsBackground = Color3.fromRGB(225, 230, 240),
+	--	NotificationBackground = Color3.fromRGB(210, 220, 230),
+	--	NotificationActionsBackground = Color3.fromRGB(225, 230, 240),
 
-		TabBackground = Color3.fromRGB(200, 210, 220),
-		TabStroke = Color3.fromRGB(180, 190, 200),
-		TabBackgroundSelected = Color3.fromRGB(175, 185, 200),
-		TabTextColor = Color3.fromRGB(50, 55, 60),
-		SelectedTabTextColor = Color3.fromRGB(30, 35, 40),
+	--	TabBackground = Color3.fromRGB(200, 210, 220),
+	--	TabStroke = Color3.fromRGB(180, 190, 200),
+	--	TabBackgroundSelected = Color3.fromRGB(175, 185, 200),
+	--	TabTextColor = Color3.fromRGB(50, 55, 60),
+	--	SelectedTabTextColor = Color3.fromRGB(30, 35, 40),
 
-		ElementBackground = Color3.fromRGB(210, 220, 230),
-		ElementBackgroundHover = Color3.fromRGB(220, 230, 240),
-		SecondaryElementBackground = Color3.fromRGB(200, 210, 220),
-		ElementStroke = Color3.fromRGB(190, 200, 210),
-		SecondaryElementStroke = Color3.fromRGB(180, 190, 200),
+	--	ElementBackground = Color3.fromRGB(210, 220, 230),
+	--	ElementBackgroundHover = Color3.fromRGB(220, 230, 240),
+	--	SecondaryElementBackground = Color3.fromRGB(200, 210, 220),
+	--	ElementStroke = Color3.fromRGB(190, 200, 210),
+	--	SecondaryElementStroke = Color3.fromRGB(180, 190, 200),
 
-		SliderBackground = Color3.fromRGB(200, 220, 235),  -- Lighter shade
-		SliderProgress = Color3.fromRGB(70, 130, 180),
-		SliderStroke = Color3.fromRGB(150, 180, 220),
+	--	SliderBackground = Color3.fromRGB(200, 220, 235),  -- Lighter shade
+	--	SliderProgress = Color3.fromRGB(70, 130, 180),
+	--	SliderStroke = Color3.fromRGB(150, 180, 220),
 
-		ToggleBackground = Color3.fromRGB(210, 220, 230),
-		ToggleEnabled = Color3.fromRGB(70, 160, 210),
-		ToggleDisabled = Color3.fromRGB(180, 180, 180),
-		ToggleEnabledStroke = Color3.fromRGB(60, 150, 200),
-		ToggleDisabledStroke = Color3.fromRGB(140, 140, 140),
-		ToggleEnabledOuterStroke = Color3.fromRGB(100, 120, 140),
-		ToggleDisabledOuterStroke = Color3.fromRGB(120, 120, 130),
+	--	ToggleBackground = Color3.fromRGB(210, 220, 230),
+	--	ToggleEnabled = Color3.fromRGB(70, 160, 210),
+	--	ToggleDisabled = Color3.fromRGB(180, 180, 180),
+	--	ToggleEnabledStroke = Color3.fromRGB(60, 150, 200),
+	--	ToggleDisabledStroke = Color3.fromRGB(140, 140, 140),
+	--	ToggleEnabledOuterStroke = Color3.fromRGB(100, 120, 140),
+	--	ToggleDisabledOuterStroke = Color3.fromRGB(120, 120, 130),
 
-		DropdownSelected = Color3.fromRGB(220, 230, 240),
-		DropdownUnselected = Color3.fromRGB(200, 210, 220),
+	--	DropdownSelected = Color3.fromRGB(220, 230, 240),
+	--	DropdownUnselected = Color3.fromRGB(200, 210, 220),
 
-		InputBackground = Color3.fromRGB(220, 230, 240),
-		InputStroke = Color3.fromRGB(180, 190, 200),
-		PlaceholderColor = Color3.fromRGB(150, 150, 150)
+	--	InputBackground = Color3.fromRGB(220, 230, 240),
+	--	InputStroke = Color3.fromRGB(180, 190, 200),
+	--	PlaceholderColor = Color3.fromRGB(150, 150, 150)
+	--})
 
 	local Keybind = Tab:CreateKeybind({
 		Name = "Keybind Example",
