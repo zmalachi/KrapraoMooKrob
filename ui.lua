@@ -1,4 +1,3 @@
-﻿-- ข้อความ ASCII Art
 local ascii_art = [[
 by malachi nakubeiei
  _   _                                                     _   _            _     
